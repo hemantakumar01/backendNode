@@ -1,0 +1,16 @@
+import jwt from "jsonwebtoken";
+export const sendToken = (user, res, status = 200, message) => {
+  const token = jwt.sign({ _id: user._id }, process.env.JWT_TOKEN);
+  res
+    .status(status)
+    .cookie("token", token, {
+      http: true,
+      maxAge: 15 * 60 * 1000,
+      sameSite: process.env.NODE_ENV === "Development" ? "lax" : "none",
+      secure: process.env.NODE_ENV === "Development" ? false : true,
+    })
+    .json({
+      success: true,
+      message,
+    });
+};

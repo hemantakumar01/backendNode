@@ -1,0 +1,12 @@
+import { app } from "./app.js";
+import connectDB from "./data/bdConnect.js";
+connectDB();
+app.listen(process.env.PORT, () => {
+  console.log(
+    "Server is working on port :",
+    process.env.PORT,
+    " And in ",
+    process.env.NODE_ENV,
+    " mode"
+  );
+});
