@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 const connectDB = () => {
   mongoose
     .connect(process.env.DB_URL, { dbName: "dackendApi" })
-    .then(() => {
-      console.log("Connected to DB");
+    .then((c) => {
+      console.log(`Connected to ${c.connection.host}`);
     })
     .catch((e) => {
       console.log(e);
