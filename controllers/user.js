@@ -21,7 +21,7 @@ export const createUser = async (req, res, next) => {
     user = await User.create({ name, email, password: hasedpassword });
     sendToken(user, res, 200, "User created successfully");
   } catch (error) {
-    next(error);
+    next(new ErroHandeler("this is error"), 404);
   }
 };
 
